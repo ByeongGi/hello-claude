@@ -4,7 +4,7 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as request from 'supertest';
 import { App } from 'supertest/types';
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
 import { User } from '../src/domain/users/user.entity';
 
 interface AuthResponse {
