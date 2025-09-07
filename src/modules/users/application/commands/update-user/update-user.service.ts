@@ -16,7 +16,7 @@ import {
   DatabaseConstraintException,
   DatabaseException,
   DatabaseDeadlockException,
-} from '@/application/common/exceptions/database.exception';
+} from '@/libs/exceptions/database.exception';
 
 @CommandHandler(UpdateUserCommand)
 export class UpdateUserService implements ICommandHandler<UpdateUserCommand> {

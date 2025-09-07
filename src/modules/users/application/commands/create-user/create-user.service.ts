@@ -12,7 +12,7 @@ import {
   DatabaseConnectionException,
   DatabaseConstraintException,
   DatabaseException,
-} from '@/application/common/exceptions/database.exception';
+} from '@/libs/exceptions/database.exception';
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserService implements ICommandHandler<CreateUserCommand> {

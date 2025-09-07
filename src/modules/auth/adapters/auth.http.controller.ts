@@ -15,7 +15,7 @@ import {
 import {
   ValidationErrorResponseDto,
   UnauthorizedErrorResponseDto,
-} from '@/application/common/dto/error-response.dto';
+} from '@/libs/dto/error-response.dto';
 import { AuthService } from '@/application/auth/auth.service';
 import { LoginDto } from '@/application/auth/dto/login.dto';
 import { RefreshTokenDto } from '@/application/auth/dto/refresh-token.dto';

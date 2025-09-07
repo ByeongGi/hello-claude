@@ -24,25 +24,25 @@ import { UpdateUserRequestDto } from './dtos/update-user.request.dto';
 import { UserQueryDto } from './dtos/user.query.dto';
 import { UserResponseDto } from './dtos/user.response.dto';
 import { IdResponse } from './dtos/id.response.dto';
-import { CreateUserCommand } from './application/commands/create-user/create-user.command';
-import { UpdateUserCommand } from './application/commands/update-user/update-user.command';
-import { DeleteUserCommand } from './application/commands/delete-user/delete-user.command';
-import { FindUsersQuery } from './application/queries/find-users/find-users.query';
-import { FindUserByIdQuery } from './application/queries/find-user-by-id/find-user-by-id.query';
+import { CreateUserCommand } from '../../application/commands/create-user/create-user.command';
+import { UpdateUserCommand } from '../../application/commands/update-user/update-user.command';
+import { DeleteUserCommand } from '../../application/commands/delete-user/delete-user.command';
+import { FindUsersQuery } from '../../application/queries/find-users/find-users.query';
+import { FindUserByIdQuery } from '../../application/queries/find-user-by-id/find-user-by-id.query';
 
 // Domain Errors
 import {
   UserAlreadyExistsError,
   UserNotFoundError,
-} from './domain/user.errors';
+} from '../../domain/user.errors';
 
 // Common DTOs
-import { PaginatedResponseDto } from '@/application/common/dto/pagination-response.dto';
+import { PaginatedResponseDto } from '@/libs/dto/pagination-response.dto';
 import {
   DatabaseConnectionException,
   DatabaseConstraintException,
   DatabaseDeadlockException,
-} from '@/application/common/exceptions/database.exception';
+} from '@/libs/exceptions/database.exception';
 
 @ApiTags('Users')
 @Controller('users')

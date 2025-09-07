@@ -10,7 +10,7 @@ import {
   DatabaseConnectionException,
   DatabaseConstraintException,
   DatabaseException,
-} from '@/application/common/exceptions/database.exception';
+} from '@/libs/exceptions/database.exception';
 
 @CommandHandler(DeleteUserCommand)
 export class DeleteUserService implements ICommandHandler<DeleteUserCommand> {

@@ -4,12 +4,12 @@ import { FindUsersQuery } from './find-users.query';
 import { UserRepositoryPort } from '../../../database/user.repository.port';
 import { USER_REPOSITORY } from '../../../user.tokens';
 import { UserResponseDto } from '../../../dtos/user.response.dto';
-import { PaginatedResponseDto } from '@/application/common/dto/pagination-response.dto';
+import { PaginatedResponseDto } from '@/libs/dto/pagination-response.dto';
 import {
   DatabaseTimeoutException,
   DatabaseConnectionException,
   DatabaseException,
-} from '@/application/common/exceptions/database.exception';
+} from '@/libs/exceptions/database.exception';
 
 @QueryHandler(FindUsersQuery)
 export class FindUsersHandler implements IQueryHandler<FindUsersQuery> {
