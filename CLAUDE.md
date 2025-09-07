@@ -189,19 +189,19 @@ CRUD 기능과 적절한 DTO, Entity를 포함해서요."
 ### 개발 환경 설정
 ```bash
 # 개발 환경 시작
-npm run start:dev
+pnpm run start:dev
 
 # 테스트 실행
-npm run test
-npm run test:e2e
+pnpm run test
+pnpm run test:e2e
 
 # 린트 체크
-npm run lint
-npm run format
+pnpm run lint
+pnpm run format
 
 # 데이터베이스
-npm run migration:run
-npm run migration:revert
+pnpm run migration:run
+pnpm run migration:revert
 ```
 
 ### 코드 리뷰 체크리스트

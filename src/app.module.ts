@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE, APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './application/users/users.module';
+import { UserModule } from './modules/users/user.module';
 import { AuthModule } from './application/auth/auth.module';
 import { HealthModule } from './infrastructure/health/health.module';
 import { SeedModule } from './infrastructure/database/seeds/seed.module';
@@ -29,7 +29,7 @@ import { DatabaseRetryInterceptor } from './application/common/interceptors/data
       inject: [ConfigService],
       useFactory: getDatabaseConfig,
     }),
-    UsersModule,
+    UserModule,
     AuthModule,
     HealthModule,
     SeedModule,

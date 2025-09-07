@@ -17,7 +17,9 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/libs/*": ["src/libs/*"],
+      "@/modules/*": ["src/modules/*"]
     }
   }
 }
