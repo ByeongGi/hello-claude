@@ -1,4 +1,4 @@
-import { ValueObject } from '@/libs/ddd';
+import { ValueObject } from '@/libs/ddd/value-object';
 import { randomUUID } from 'crypto';
 
 interface UserIdProps {

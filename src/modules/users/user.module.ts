@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 // Infrastructure
 import { UserRepository } from './database/user.repository';
 import { UserOrmEntity } from './database/user.orm-entity';
-import { UsersController } from './users.controller';
+import { UsersController } from './adapters/http/users.controller';
 
 // Application
 import { CreateUserService } from './application/commands/create-user/create-user.service';

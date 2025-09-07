@@ -1,4 +1,4 @@
-import { AggregateRoot } from '@/libs/ddd';
+import { AggregateRoot } from '@/libs/ddd/aggregate-root';
 import { UserCreatedDomainEvent } from './events/user-created.domain-event';
 import { Email } from './value-objects/email.value-object';
 import { UserId } from './value-objects/user-id.value-object';
@@ -15,12 +15,18 @@ export interface UserProps extends CreateUserProps {
   updatedAt: Date;
 }
 
-export class UserEntity extends AggregateRoot<UserProps> {
-  protected readonly _id: UserId;
+export enum UserRole {
+  ADMIN = 'admin',
+  USER = 'user',
+}
 
+export class UserEntity extends AggregateRoot<UserProps> {
   constructor(props: UserProps) {
     super(props, props.id.value);
-    this._id = props.id;
+  }
+
+  get userId(): UserId {
+    return this.props.id;
   }
 
   static create(create: CreateUserProps): UserEntity {

@@ -17,26 +17,26 @@ export class UserMapper {
       updatedAt: ormEntity.updatedAt,
     };
 
-    return new UserEntity(entityProps, entityProps.id.value);
+    return new UserEntity(entityProps);
   }
 
   toPersistence(entity: UserEntity): UserOrmEntity {
     const ormEntity = new UserOrmEntity();
-    ormEntity.id = entity.id.value;
+    ormEntity.id = entity.userId.value;
     ormEntity.email = entity.email.value;
     ormEntity.name = entity.name;
     ormEntity.password = entity.password;
-    ormEntity.createdAt = entity.getProps().createdAt;
-    ormEntity.updatedAt = entity.getProps().updatedAt;
+    ormEntity.createdAt = entity.props.createdAt;
+    ormEntity.updatedAt = entity.props.updatedAt;
     return ormEntity;
   }
 
   toResponse(entity: UserEntity): UserResponseDto {
     return new UserResponseDto({
-      id: entity.id.value,
+      id: entity.userId.value,
       email: entity.email.value,
       name: entity.name,
-      createdAt: entity.getProps().createdAt.toISOString(),
+      createdAt: entity.props.createdAt.toISOString(),
     });
   }
 }

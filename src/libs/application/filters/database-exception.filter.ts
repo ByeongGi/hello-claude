@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 import { QueryFailedError, EntityNotFoundError, TypeORMError } from 'typeorm';
-import { DatabaseException } from '../exceptions/database.exception';
+import { DatabaseException } from '@/libs/exceptions/database.exception';
 
 @Catch(TypeORMError, QueryFailedError, EntityNotFoundError)
 export class DatabaseExceptionFilter implements ExceptionFilter {

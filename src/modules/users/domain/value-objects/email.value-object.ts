@@ -1,5 +1,5 @@
-import { ValueObject } from '@/libs/ddd';
-import { Guard } from '@/libs/guard/guard';
+import { ValueObject } from '@/libs/ddd/value-object';
+import { Guard } from '@/libs/guard';
 
 interface EmailProps {
   value: string;

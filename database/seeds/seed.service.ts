@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '@/modules/users/domain/user.entity';
+import { UserOrmEntity } from '@/modules/users/database/user.orm-entity';
 import { userSeeds } from './user.seed';
 
 @Injectable()
@@ -9,8 +9,8 @@ export class SeedService {
   private readonly logger = new Logger(SeedService.name);
 
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    @InjectRepository(UserOrmEntity)
+    private readonly userRepository: Repository<UserOrmEntity>,
   ) {}
 
   /**
@@ -44,13 +44,19 @@ export class SeedService {
       return;
     }
 
-    // 시드 데이터 삽입
-    const savedUsers = await this.userRepository.save(userSeeds);
+    // ORM엔티티로 변환
+    const ormEntities = userSeeds.map((seed) => ({
+      name: seed.name,
+      email: seed.email.value,
+      password: seed.password,
+    }));
+    
+    const savedUsers = await this.userRepository.save(ormEntities);
     this.logger.log(`✅ ${savedUsers.length}명의 사용자 시드 데이터 생성 완료`);
 
     // 생성된 사용자 로그
-    savedUsers.forEach((user) => {
-      this.logger.log(`  - ${user.name} (${user.email}) [${user.role}]`);
+    savedUsers.forEach((user: any) => {
+      this.logger.log(`  - ${user.name} (${user.email})`);
     });
   }
 
@@ -88,15 +94,12 @@ export class SeedService {
 
     if (userCount > 0) {
       const users = await this.userRepository.find({
-        select: ['name', 'email', 'role', 'isActive'],
+        select: ['name', 'email'],
       });
 
       this.logger.log('📝 사용자 목록:');
       users.forEach((user) => {
-        const status = user.isActive ? '활성' : '비활성';
-        this.logger.log(
-          `  - ${user.name} (${user.email}) [${user.role}] ${status}`,
-        );
+          this.logger.log(`  - ${user.name} (${user.email})`)
       });
     }
   }

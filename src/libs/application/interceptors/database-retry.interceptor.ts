@@ -13,10 +13,7 @@ import {
   RETRY_METADATA_KEY,
   RetryOptions,
 } from '../decorators/database-retry.decorator';
-import {
-  DatabaseConnectionException,
-  DatabaseTimeoutException,
-} from '../exceptions/database.exception';
+import { DatabaseException } from '@/libs/exceptions/database.exception';
 
 @Injectable()
 export class DatabaseRetryInterceptor implements NestInterceptor {
@@ -46,7 +43,7 @@ export class DatabaseRetryInterceptor implements NestInterceptor {
       context.getHandler(),
     );
 
-    const retryOptions = { ...defaultRetryOptions, ...methodRetryOptions };
+    const retryOptions = { ...defaultRetryOptions, ...(methodRetryOptions || {}) };
 
     const request = context.switchToHttp().getRequest();
     const methodName = `${context.getClass().name}.${context.getHandler().name}`;
