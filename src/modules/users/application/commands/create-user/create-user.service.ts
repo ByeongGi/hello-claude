@@ -43,9 +43,9 @@ export class CreateUserService implements ICommandHandler<CreateUserCommand> {
       });
 
       await this.userRepo.save(user);
-      this.logger.log(`User created successfully: ${user.id.value}`);
+      this.logger.log(`User created successfully: ${user.userId.value}`);
 
-      return Ok(user.id.value);
+      return Ok(user.userId.value);
     } catch (error: any) {
       this.logger.error(
         `Failed to create user: ${error.message}`,

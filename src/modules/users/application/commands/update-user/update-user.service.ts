@@ -29,7 +29,7 @@ export class UpdateUserService implements ICommandHandler<UpdateUserCommand> {
 
   async execute(command: UpdateUserCommand): Promise<Result<boolean, Error>> {
     try {
-      const userId = new UserId(command.id);
+      const userId = UserId.create(command.id);
       const user = await this.userRepo.findById(userId);
 
       if (!user) {
@@ -40,7 +40,7 @@ export class UpdateUserService implements ICommandHandler<UpdateUserCommand> {
         const newEmail = Email.create(command.email);
         if (!user.email.equals(newEmail)) {
           const existingUser = await this.userRepo.findByEmail(newEmail);
-          if (existingUser && !existingUser.id.equals(user.id)) {
+          if (existingUser && !existingUser.userId.equals(user.userId)) {
             return Err(new UserAlreadyExistsError(newEmail.value));
           }
           user.updateEmail(newEmail);

@@ -5,7 +5,7 @@ export class CreateUserCommand extends Command {
   readonly name: string;
   readonly password?: string;
 
-  constructor(props: CommandProps<CreateUserCommand>) {
+  constructor(props: CommandProps) {
     super(props);
     this.email = props.email;
     this.name = props.name;

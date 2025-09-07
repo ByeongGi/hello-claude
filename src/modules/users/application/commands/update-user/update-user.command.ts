@@ -6,7 +6,7 @@ export class UpdateUserCommand extends Command {
   readonly email?: string;
   readonly password?: string;
 
-  constructor(props: CommandProps<UpdateUserCommand>) {
+  constructor(props: CommandProps) {
     super(props);
     this.id = props.id;
     this.name = props.name;

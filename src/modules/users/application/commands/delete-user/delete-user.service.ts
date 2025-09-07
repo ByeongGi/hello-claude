@@ -23,7 +23,7 @@ export class DeleteUserService implements ICommandHandler<DeleteUserCommand> {
 
   async execute(command: DeleteUserCommand): Promise<Result<boolean, Error>> {
     try {
-      const userId = new UserId(command.id);
+      const userId = UserId.create(command.id);
       const user = await this.userRepo.findById(userId);
 
       if (!user) {

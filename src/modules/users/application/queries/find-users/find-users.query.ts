@@ -5,7 +5,7 @@ export class FindUsersQuery extends Query {
   readonly limit: number;
   readonly search?: string;
 
-  constructor(props: QueryProps<FindUsersQuery>) {
+  constructor(props: QueryProps) {
     super(props);
     this.page = props.page;
     this.limit = props.limit;
