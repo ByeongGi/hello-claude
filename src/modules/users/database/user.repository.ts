@@ -31,9 +31,18 @@ export class UserRepository implements UserRepositoryPort {
     return ormEntity ? this.mapper.toDomain(ormEntity) : null;
   }
 
-  async findById(id: UserId): Promise<UserEntity | null> {
+  async findByUserId(id: UserId): Promise<UserEntity | null> {
     const ormEntity = await this.userOrmRepo.findOne({
       where: { id: id.value },
+    });
+
+    return ormEntity ? this.mapper.toDomain(ormEntity) : null;
+  }
+
+  // Implementation of RepositoryPort's findById method
+  async findById(id: string): Promise<UserEntity | null> {
+    const ormEntity = await this.userOrmRepo.findOne({
+      where: { id },
     });
 
     return ormEntity ? this.mapper.toDomain(ormEntity) : null;
@@ -65,7 +74,12 @@ export class UserRepository implements UserRepositoryPort {
       take: limit,
     });
 
-    const users = ormEntities.map((entity) => new UserResponseDto(entity));
+    const users = ormEntities.map((entity) => new UserResponseDto({
+      id: entity.id,
+      name: entity.name,
+      email: entity.email,
+      createdAt: entity.createdAt.toISOString(),
+    }));
 
     return { users, total };
   }

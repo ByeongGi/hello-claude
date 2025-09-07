@@ -3,9 +3,9 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigService } from '@nestjs/config';
 import { CqrsModule } from '@nestjs/cqrs';
-import { AuthService } from './auth.service';
-import { AuthController } from '@/infrastructure/auth/auth.controller';
-import { JwtStrategy } from '@/infrastructure/auth/strategies/jwt.strategy';
+import { AuthService } from './application/auth.service';
+import { AuthController } from './adapters/auth.http.controller';
+import { JwtStrategy } from './application/strategies/jwt.strategy';
 import { UserMapper } from '@/modules/users/user.mapper';
 
 @Module({

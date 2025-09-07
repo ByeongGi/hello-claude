@@ -7,7 +7,7 @@ import { UserResponseDto } from '../dtos/user.response.dto';
 
 export interface UserRepositoryPort extends RepositoryPort<UserEntity> {
   findByEmail(email: Email): Promise<UserEntity | null>;
-  findById(id: UserId): Promise<UserEntity | null>;
+  findByUserId(id: UserId): Promise<UserEntity | null>;
   existsByEmail(email: Email): Promise<boolean>;
   findMany(
     query: FindUsersQuery,

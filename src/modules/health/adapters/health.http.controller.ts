@@ -2,8 +2,8 @@ import { Controller, Get, HttpStatus } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { DatabaseErrorResponseDto } from '@/libs/dto/database-error-response.dto';
-import { Public } from '@/infrastructure/auth/decorators/public.decorator';
+import { DatabaseErrorResponseDto } from '@/libs/api/database-error-response.dto';
+import { Public } from '../../auth/adapters/decorators/public.decorator';
 import { DatabaseConnectionException } from '@/libs/exceptions/database.exception';
 
 interface DatabaseDetails {

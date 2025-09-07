@@ -19,11 +19,11 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Result, match } from 'oxide.ts';
 
 // Local DTOs and Commands
-import { CreateUserRequestDto } from './dtos/create-user.request.dto';
-import { UpdateUserRequestDto } from './dtos/update-user.request.dto';
-import { UserQueryDto } from './dtos/user.query.dto';
-import { UserResponseDto } from './dtos/user.response.dto';
-import { IdResponse } from './dtos/id.response.dto';
+import { CreateUserRequestDto } from '../../application/commands/create-user/create-user.request.dto';
+import { UpdateUserRequestDto } from '../../application/commands/update-user/update-user.request.dto';
+import { UserQueryDto } from '../../application/queries/find-users/user.query.dto';
+import { UserResponseDto } from '../../dtos/user.response.dto';
+import { IdResponse } from '../../dtos/id.response.dto';
 import { CreateUserCommand } from '../../application/commands/create-user/create-user.command';
 import { UpdateUserCommand } from '../../application/commands/update-user/update-user.command';
 import { DeleteUserCommand } from '../../application/commands/delete-user/delete-user.command';
@@ -37,7 +37,7 @@ import {
 } from '../../domain/user.errors';
 
 // Common DTOs
-import { PaginatedResponseDto } from '@/libs/dto/pagination-response.dto';
+import { PaginatedResponseDto } from '@/libs/api/pagination-response.dto';
 import {
   DatabaseConnectionException,
   DatabaseConstraintException,

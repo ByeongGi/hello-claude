@@ -4,7 +4,7 @@ import { FindUsersQuery } from './find-users.query';
 import { UserRepositoryPort } from '../../../database/user.repository.port';
 import { USER_REPOSITORY } from '../../../user.tokens';
 import { UserResponseDto } from '../../../dtos/user.response.dto';
-import { PaginatedResponseDto } from '@/libs/dto/pagination-response.dto';
+import { PaginatedResponseDto } from '@/libs/api/pagination-response.dto';
 import {
   DatabaseTimeoutException,
   DatabaseConnectionException,

@@ -12,8 +12,8 @@ import { QueryFailedError, TypeORMError } from 'typeorm';
 import {
   RETRY_METADATA_KEY,
   RetryOptions,
-} from '../decorators/database-retry.decorator';
-import { DatabaseException } from '@/libs/exceptions/database.exception';
+} from '../../decorators/database-retry.decorator';
+import { DatabaseConnectionException, DatabaseTimeoutException } from '@/libs/exceptions/database.exception';
 
 @Injectable()
 export class DatabaseRetryInterceptor implements NestInterceptor {

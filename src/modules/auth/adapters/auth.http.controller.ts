@@ -15,15 +15,15 @@ import {
 import {
   ValidationErrorResponseDto,
   UnauthorizedErrorResponseDto,
-} from '@/libs/dto/error-response.dto';
-import { AuthService } from '@/application/auth/auth.service';
-import { LoginDto } from '@/application/auth/dto/login.dto';
-import { RefreshTokenDto } from '@/application/auth/dto/refresh-token.dto';
-import { AuthResponseDto } from '@/application/auth/dto/auth-response.dto';
-import { UserResponseDto } from '@/application/users/dto/user-response.dto';
+} from '@/libs/api/error-response.dto';
+import { AuthService } from '../application/auth.service';
+import { LoginDto } from '../application/dto/login.dto';
+import { RefreshTokenDto } from '../application/dto/refresh-token.dto';
+import { AuthResponseDto } from '../application/dto/auth-response.dto';
+import { UserResponseDto } from '../../users/dtos/user.response.dto';
 import { Public } from './decorators/public.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../application/guards/jwt-auth.guard';
 
 @ApiTags('Authentication')
 @Controller('auth')
