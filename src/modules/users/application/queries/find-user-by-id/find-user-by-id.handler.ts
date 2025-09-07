@@ -24,7 +24,7 @@ export class FindUserByIdHandler implements IQueryHandler<FindUserByIdQuery> {
   ): Promise<Result<UserResponseDto, UserNotFoundError>> {
     try {
       const userId = UserId.create(query.id);
-      const user = await this.userRepo.findById(userId);
+      const user = await this.userRepo.findByUserId(userId);
 
       if (!user) {
         return Err(new UserNotFoundError(query.id));

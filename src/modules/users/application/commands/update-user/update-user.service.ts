@@ -30,7 +30,7 @@ export class UpdateUserService implements ICommandHandler<UpdateUserCommand> {
   async execute(command: UpdateUserCommand): Promise<Result<boolean, Error>> {
     try {
       const userId = UserId.create(command.id);
-      const user = await this.userRepo.findById(userId);
+      const user = await this.userRepo.findByUserId(userId);
 
       if (!user) {
         return Err(new UserNotFoundError());
