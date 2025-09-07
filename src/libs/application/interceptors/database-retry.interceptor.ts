@@ -25,14 +25,28 @@ export class DatabaseRetryInterceptor implements NestInterceptor {
   constructor(private readonly reflector: Reflector) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    const retryOptions = this.reflector.get<RetryOptions>(
+    const defaultRetryOptions: Required<RetryOptions> = {
+      maxAttempts: 3,
+      delayMs: 1000,
+      backoffMultiplier: 2,
+      maxDelayMs: 10000,
+      retryableErrors: [
+        'ECONNREFUSED',
+        'ETIMEDOUT',
+        'ENOTFOUND',
+        'CONNECTION_ERROR',
+        'QUERY_TIMEOUT',
+        '40P01', // PostgreSQL deadlock
+        '53300', // Too many connections
+      ],
+    };
+
+    const methodRetryOptions = this.reflector.get<RetryOptions>(
       RETRY_METADATA_KEY,
       context.getHandler(),
     );
 
-    if (!retryOptions) {
-      return next.handle();
-    }
+    const retryOptions = { ...defaultRetryOptions, ...methodRetryOptions };
 
     const request = context.switchToHttp().getRequest();
     const methodName = `${context.getClass().name}.${context.getHandler().name}`;

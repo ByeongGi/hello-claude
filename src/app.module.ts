@@ -5,19 +5,19 @@ import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE, APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/users/user.module';
-import { AuthModule } from './application/auth/auth.module';
-import { HealthModule } from './infrastructure/health/health.module';
-import { SeedModule } from './infrastructure/database/seeds/seed.module';
-import { getDatabaseConfig } from './infrastructure/database/database.config';
-import { AllExceptionsFilter } from './infrastructure/common/filters/http-exception.filter';
-import { LoggingInterceptor } from './infrastructure/common/interceptors/logging.interceptor';
-import { ValidationPipe } from './infrastructure/common/pipes/validation.pipe';
-import { JwtAuthGuard } from './infrastructure/auth/guards/jwt-auth.guard';
+import { AuthModule } from './modules/auth/auth.module';
+import { HealthModule } from './modules/health/health.module';
+import { SeedModule } from '../../database/seeds/seed.module';
+import { getDatabaseConfig } from './configs/database.config';
+import { AllExceptionsFilter } from './libs/application/filters/http-exception.filter';
+import { LoggingInterceptor } from './libs/application/interceptors/logging.interceptor';
+import { ValidationPipe } from './libs/api/pipes/validation.pipe';
+import { JwtAuthGuard } from './modules/auth/application/guards/jwt-auth.guard';
 import {
   DatabaseExceptionFilter,
   CustomDatabaseExceptionFilter,
-} from './application/common/filters/database-exception.filter';
-import { DatabaseRetryInterceptor } from './application/common/interceptors/database-retry.interceptor';
+} from './libs/application/filters/database-exception.filter';
+import { DatabaseRetryInterceptor } from './libs/application/interceptors/database-retry.interceptor';
 
 @Module({
   imports: [

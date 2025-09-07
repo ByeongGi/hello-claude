@@ -1,4 +1,4 @@
-import { User, UserRole } from '../../../domain/users/user.entity';
+import { User, UserRole } from '@/modules/users/domain/user.entity';
 import * as bcrypt from 'bcrypt';
 
 export const userSeeds: Partial<User>[] = [
