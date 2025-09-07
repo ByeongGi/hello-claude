@@ -21,5 +21,6 @@
       "@/libs/*": ["src/libs/*"],
       "@/modules/*": ["src/modules/*"]
     }
-  }
+  },
+  "exclude": ["test/**/*"]
 }

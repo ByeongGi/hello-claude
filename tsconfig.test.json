@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["jest", "node", "supertest"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "declaration": false,
+    "paths": {
+      "@/*": ["src/*"],
+      "@/libs/*": ["src/libs/*"],
+      "@/modules/*": ["src/modules/*"],
+      "@test/*": ["test/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ],
+  "exclude": [],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
