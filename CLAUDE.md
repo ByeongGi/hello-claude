@@ -229,17 +229,26 @@ pnpm run migration:revert
 
 ### 프로젝트 내부 문서
 - API 문서: http://localhost:3000/api (Swagger)
-- 데이터베이스 ERD: `docs/database-schema.md`
-- 아키텍처 다이어그램: `docs/architecture.md`
-- 배포 가이드: `docs/deployment.md`
-- Claude Code 활용 가이드: `docs/claude/` 디렉토리
-  - 코드 리뷰 요청 방법: `docs/claude/how-to-request-code-review.md`
-  - 테스트 코드 작성 가이드: `docs/claude/how-to-write-test-code.md`
-  - 리팩토링 가이드: `docs/claude/how-to-refactor-code.md`
+- @docs/database-schema.md - 데이터베이스 ERD 및 스키마 설계
+- @docs/architecture.md - 시스템 아키텍처 다이어그램 및 헥사고날 아키텍처
+- @docs/deployment.md - 배포 가이드 및 환경 설정
+- @docs/database-seeding-guide.md - 데이터베이스 초기 데이터 설정 가이드
+- @docs/docker-compose-guide.md - Docker 기반 개발 환경 구성 가이드
+
+### Claude Code 활용 가이드
+- @docs/claude/how-to-request-code-review.md - 코드 리뷰 요청 방법 및 체크리스트
+- @docs/claude/how-to-write-test-code.md - 테스트 코드 작성 가이드 (유닛/통합/E2E)
+- @docs/claude/how-to-refactor-code.md - 리팩토링 가이드 및 모범 사례
 
 ---
 
 ## 업데이트 히스토리
+
+### 2025-09-07 (v1.0.2)
+- ✅ 문서 참조 시스템 업데이트
+  - @docs 구문을 통한 직접 문서 참조 지원
+  - Claude Code에서 docs 디렉토리 내 문서 직접 접근 가능
+- ✅ 문서 설명 추가로 가독성 향상
 
 ### 2025-09-06 (v1.0.1)
 - ✅ 누락된 프로젝트 문서 생성 완료
